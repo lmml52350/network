@@ -17,6 +17,7 @@ https://cafe.naver.com/networksong  강사님카페
 07. static routing (정적)
 08. 필터링 (access control list) --> 방화벽, 보안제품 / 주소변환=NAT(network address translation)   [집주소,아빠 외지주소 송명석]
 				private address | public address
+				RFC1918 > rout
 09. dynamic routing (동적)
 10. switching >> CCNP SW
 
@@ -83,6 +84,86 @@ ip table 사이에는
 port table
 	안배울거임
 
+
+=====================================
+대역폭 [속도때문에 높이는거 아님 , 12차선이라 꼭 빠른거 아님]
+1. 다양한 신호
+2. 안전하게 멀리
+3. 안테나 길이 짧아짐
+
+IEEE(미국 전기 전자 엔지니어링 협회)
+IEEE802.1 -> IEEE802.1q = dot1q
+IEEE802.11 - > 무선 --> IEEE802.11n
+IEEE802.15.4 센서 네트워크
+
+IANA
+ANSI
+ITU-T (여기서 규정)
+RFC --> 인터넷 표준문서 --> RFC 1918 (private address)
+IETF에서 RFC문서 관리 >> 인터넷 표준만들어짐 [논문에 5000번이상  인용시 노벨상받음]
+
+
+utp 집에서 쓰는 게이블 rj45(컴) rj11(전화)
+
+오 파 녹 갈색
+흰오  오   흰파 파  흰녹 녹  흰갈 갈
+
+흰파 <-> 흰녹 위치바꾸면    T568B 규격
+
+흰오  오   흰파 녹  흰녹 파  흰갈 갈
+1     2     3     4     5    6   7     8
+
+1<->3 ,   2<->6 위치바꾸면
+흰녹 녹 흰오 파  흰파 오  흰갈 갈
+1    2    3   4     5    6    7     8    T568A규격
+
+simplex (단방향 통신)
+duplex (양방향 통신) rx(수신측) tx(송신축)  >>>  1,2,3,6 //4,5,7,8
+	동시에 주고받기 가능한 통신 : full duplex 전이중 통신 방식 = 루핑
+	동시에 주고받기 불가한 통신 : half duplex 반이중 통신 방식 = 충돌 [무전기]
+		CSMA/CD (유선)   CSMA/CA (무선)
+
+pc 서버 라우터  = 같은 그룹
+스위치 브릿지 허버 = 같은그룹
+
+공유기 -----PC >  일반인 쓰는것 auto mdix
+	lan경우 : 100만 bit중 1 bit 오류면 안좋음
+
+///////////////////////////////////////
+
+packet tarcker
+
+rollover cable 반대로 뒤집은거
+
+서버 RS232c 통신규격 -> 9600-115200 (SecureCRT)
+
+두번째 버튼 > serial 선택후 
+com21 9600
+
+
+consol > desktop > 터미널
+
+기본게이트웨이 : 공유기 
+OSINT,쇼단 
+virustotal 피싱인지 아닌지 확인
+
+
+
+osi7 layer
+
+1.표준 유도
+2.개발,TS
+3.용어 정리
+
+
+SDU 해더제외 = payload 
+PDU 헤다포함 
+bit(1계층) > frame (2계층) > packet(3) > segment(4) > data(5~7)
+
+===========================================
+
+L7 사용자에게 정해진 규칙 에 따라 편리한 인터페이스를 제공하는 계층
+c:\window\system32\driver\etc
 
 
 
