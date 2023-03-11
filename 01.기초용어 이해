@@ -1,0 +1,90 @@
+kgr.kgitbank.com
+192.168.55.37
+
+w-09net/비번
+https://cafe.naver.com/networksong  강사님카페
+네트워크관리사2급(넷기초+리눅스+윈도우)  // cisco ccna
+
+목차 :
+01. 키워드 정리, 단어정리
+02. OSI 7 layer [7,6,5 상위계층[자연어], 데이터생성/4,3,2 하위계층[기계어], 데이터 전송/1]
+03. 주소 = 이름 L4(추상적주소,별명) L3(IPV4,논리적주소, 이름) L2 (MAC,물리적주소, 얼굴)
+
+04. packet tracer (cisco 교육용) -> cisco장비이 기본구조 , 기본명려어
+05. 가상화 KVM,QEMU => GUS3(cisco)  VMware(win)
+06. 관리 tools : telnet shh http snp syslog tftp ftp
+
+07. static routing (정적)
+08. 필터링 (access control list) --> 방화벽, 보안제품 / 주소변환=NAT(network address translation)   [집주소,아빠 외지주소 송명석]
+				private address | public address
+09. dynamic routing (동적)
+10. switching >> CCNP SW
+
+=================================================
+네트워크 : 데이터 이동 -> 0,1 > 전기통신, bit통신
+	acscii code(아스키 코드) 7bit 2^7 = 영어대문자,소문자 ,숫자,약간의 기호
+	한글16bit --> base64(7bit code로 바꿈)
+	A = alt 65 (0100 0001) --> 8자기채워줌 : 패딩한다로 표현 > redundancy bit 잉여비트
+자주쓰는 실행창 : cmd , calc, stsdm.cpl, firewall.cpl ncpa.cpl
+bit > nibble (4bit) > byte (8bit=octer)
+
+1. scr addr / dst addr   (1:1 -->multi access) [누구에게 / 누가받는지]
+2. 어디에서 시작, 어디에서 끝  -> encapsulation(헤더/꼬리붙이는 행위)  -> LAN/WAN
+====================
+주소 = 이름
+	계층구조 (송명석) / 평면구조 (아이티뱅크)[그룹주소,대표주소]
+	송 domain / 명석 host-id  --> prefix 주소 // postfix 주소 [www.naver.com]
+	은진송씨 /여산송씨 --> subnetting -> 네트워크 나누기 (보안)
+	02-111(subnet-id)-2222
+
+domain : 동일 속성들의 집합 (송)
+network-id : domain 구분자 (명석)
+host-id :  동일 network 안에서의 구분자 (같은이름중 분간 : 박명석 송명석)
+subnet-id : network 나누는 개념 (은진송씨/여산송씨)
+routing : 서로 다른 네크워크간의 통신 (networt-id/subnet-id)간의 통신
+	routing protocol 에 따라 routing 해주는 장비 = router
+	1. 주소광고 + 주소학습 = 주소교환 -> ip table (static routing&dynamic routing)[이름소개 ] 
+	2. 최적경로 연산
+	3. ip lookup [친구목록 보고 아는사람인지]
+switching : 동일 네트워크간의 통신
+	swiching protocol(arpa-net** , fddi, token ring) 에 따라 witching 해주는 장비 = switch
+
+=====================================
+인터넷 (Internet)
+	PSTN과거 자동우회경로 찾기 불가 -> convergence 안된다표현 = 우회 가능하다 healthing check = heart beat
+	arpanet -> TCP/IP(인터넷을 하기위한 ptotocol들의 집합) -> ethernet[transparnet하게 만들었다표현][돈을위해 만든상품]
+
+
+======================================
+layer2 전송기술
+LAN  (fddi token_ring . . .  arpa net)
+	preamble(쓰레기값) | dst mac | ether type | data(46byte~1500byte 싸이즈) |fcs   형태로 데이터 쏨
+	swich, router - lan interface = ethernet , fastethernet 이 만들어줌
+
+WAN (ppp*공부할거 hdlc*공부할거,  x25 frame-relay atm #공부할거 아님 나주에!! 예: 나라말싸미 비유)
+	carrier(반송파,고주파) modulation(변조한다) + demodulation(복조한다)
+	DCE(고객장비) --> DTE(시간에 따라 제공)  [장거리하기위해선 시간 맞추어 해야함]   clock rate [NTP]
+	router = wan interface = serial
+
+
+==============================
+물리적 주소 : 처음부터 부여된 주소, 변경불가  [민증번호,얼굴] , local 적 의미, MAC주소 로 공부
+논리적 주소 : 관리자에 의해서 할당된 주소, 변경가능 , [집주소,이름] IPV4주소, global적 의미 [오바마]
+추정적 주소 : port address  
+
+hop by hop 연결 (물리적 주소) = node to npde = mac = L2  [편지>우체국]
+end to end 연결 (논리적 주소) = host to host = ipv4  = L3
+procss to process 연결() = port address L4 []
+
+mac table 사이에는
+	arp table [mac:ip]
+ip table 사이에는
+	socket tabke [ip:port]
+port table
+	안배울거임
+
+
+
+
+
+
