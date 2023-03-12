@@ -1,0 +1,495 @@
+네트워크 기초 
+01. mgr.kgitbank.com  수강동의 
+02. mirai975@naver.com --> 3월주말넷기초 
+03. ftp 192.168.55.37 w-09net/12345  
+	알ftp 
+04. https://cafe.naver.com/networksong
+
+05. 네트워크 기초 -> 네트워크관리사2급(넷기초+리눅스+윈도우) // cisco ccna > ccnp > ccie 
+06. 팀뷰어 teamviewer
+
+07. 코딩 -> 생활코딩 / tcp스쿨 / w3school
+		자료구조, 알고리즘, 컴구조  
+
+08. IT전자신문
+09. 혼자 하지 않기, 손들기 
+10. win10pro 
+
+11. 목차 
+
+01. 키워드 정리, 단어정리 
+02. OSI7layer[7,6,5 상위계층[자연어],데이터생성/4,3,2 하위계층[기계어],데이터전송/1]
+03. 주소=이름 L4(추상적주소:port address) L3(논리적주소:IPv4 address) L2(물리적주소:mac address)
+
+04. packet tracer (cisco 교육용 프로그램) -> cisco장비의 기본구조, 기본명령어
+05. 가상화 -> KVM,QEMU => GNS3(cisco) vmware(win)
+06. 관리 tools : telnet ssh http ntp syslog tftp ftp ....
+
+07. static routing (정적)
+08. 필터링(access control list)-->방화벽,보안제품/주소변환=NAT(network address translation)
+					  private address | public address 
+						RFC1918  -->  routing 대상
+	넷보안
+09. dynamic routing (동적) --> CCNP R
+10. switching  --> CCNP SW
+====================================================================
+네트워크 : 데이터 이동 => 0,1 -> 전기통신, bit통신 
+	A = 65 => 0100 0001 --> 패딩한다 -> redundancy bit 잉여비트 
+
+ascii code -> 7bit 2^7 = 영어대문자, 소문자, 숫자, 약간의 기호 
+	한글16bit --> base64 : 7bit code 
+
+윈도우+R=실행창 -> cmd, calc, sysdm.cpl, firewall.cpl  ncpa.cpl
+bit > nibble (4bit) > byte (8bit=octet) 
+
+1. src addr / dst addr (1:1 --> multi access)
+2. 어디서 시작, 어디서 끝 -> 헤더/꼬리 -> encapsulation -> LAN/WAN
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+주소 = 이름 
+	계층구조 송/명석 //// 평면구조 아이티뱅크 = 그룹주소,대표주소
+
+	송domain /명석 host-id   --> prefix 주소 // postfix 주소 -> www.naver.com
+		은진송씨 / 여산송씨 --> subnetting -> 네트워크 나누기 (보안)
+		02-111(subnet-id)-2222  
+
+domain : 동일 속성들의 집합 
+network-id : domain 구분자 
+host-id : 동일 network 안에서의 구분자 
+subnet-id : network 나누는 개념
+
+routing : 서로 다른 네트워크(network-id/subnet-id)간의 통신 
+	routing protocol에 따라 routing 해주는 장비 = router 
+	1. 주소광고+주소학습=주소교환[static routing&dynamic routing]=>ip table
+	2. 최적경로연산
+	3. ip lookup
+
+switching : 동일 네트워크에서의 통신
+	switching protocol(arpa-net**, fddi, token ring....)에 따라 
+		switching 해주는 장비 = switch
+===================================================================
+인터넷(Internet) 
+	PSTN(public switched telephony network)= 자동 우회경로 찾기 불가 
+		-> convergence 안된다. = 수렴 = 동기화 = 망의 변화를 인지 = 우회가능하다
+			healthing check = heart beat 
+	arpanet -> TCP/IP(인터넷을 하기위한 protocol들의 집합) --> ethernet
+							transparent 
+-ARPAMET:인터넷의 시초
+	 1968년 스탠포드, 유타, ICLA, UCSB 4개 대학을 연결하는 네트워크를 구성하여 ARPANET
+	 1969년 BBN이 개발한 IMP가 처음으로 설치 >> 네트워크에 첫 host computer 연결
+	 1989년부터 Internet의 초창기 형태 개발 제안이 이루어짐
+======================================================================
+layer 2 전송 기술 
+
+LAN(fddi token_ring ... arpa net*) 
+	preamble(쓰레기값)|dst mac|src mac|ether type|data(46byte-1500byte)|fcs
+	switch, router = lan interface = ethernet, fastethernet 
+			10M 100M ...
+
+WAN(ppp* hdlc* x25 frame-relay atm)
+	carrier(반송파, 고주파) modulation(변조한다)+demodulation(복조한다)
+	DCE --> DTE 	clock rate  [NTP]
+	router = wan interface = serial 
+		1544kbps
+=====================================================================
+물리적 주소:처음부터 부여되어진 주소, 변경불가, 얼굴,민증번호, local적 의미, mac주소 
+논리적 주소:관리자에 의해서 할당된 주소, 변경가능, 집주소,이름, IPv4주소, global적 의미
+추상적 주소:port address = 
+
+hop by hop 연결 (물리적 주소) = node to node = mac[IEEE] = L2
+end to end 연결 (논리적 주소) = host to host = ipv4[ICANN] = L3
+process to process 연결 = port address[ICANN] = L4
+
+mac table 
+	arp table [mac:ip]
+ip table
+
+	socket table [ip:port]
+port table 
+============================================================================
+대역폭 
+1. 다양한 신호
+2. 안전하게 멀리
+3. 안테나 길이 
+...
+
+
+16QAM / 2048QAM
+SISO / MIMO 
+link aggregation
+...
+
+
+IEEE(미국 전기 전자 엔지니어링 협회) 
+	전자출판
+	MAC주소 
+	표준
+IEEE802.1 -> IEEE802.1q = dot1q	
+IEEE802.11 -> 무선 --> IEEE802.11n 
+IEEE802.15.4 센서 네트워크 
+
+IANA
+ANSI
+ITU-T
+RFC --> 인터넷 표준 문서 --> RFC1918 (private address) 
+IETF --> ietf draft 상태 -> 번호 부여 -> 인터넷 표준 -> 5000번 이상 인용
+
+
+
+사실상 표준 de facto standard 
+
+
+
+
+오	파	녹	갈
+
+흰오 오	흰파 파	흰녹 녹	흰갈 갈
+
+흰파<->흰녹
+
+흰오 오	흰녹 파	흰파 녹	흰갈 갈  --> T568B규격   ****
+ 1  2    3  4    5  6    7  8
+
+1<->3 2<->6 
+
+흰녹 녹	흰오 파	흰파 오	흰갈 갈  --> T568A규격  ****
+ 1  2    3  4    5  6    7  8
+
+
+simplex(단방향 통신)
+
+duplex(양방향 통신) rx(수신측) tx(송신측) --> 1,2 3,6 // 4,5,7,8 PoE IPTV
+	동시에 주고 받기 가능한 통신 : full duplex 전이중 통신 방식 = 루핑문제 
+	동시에 주고 받기 불가한 통신 : half duplex 반이중 통신 방식 = 충돌문제 [무전기]
+			CSMA/CD(유선)   CSMA/CA(무선) 
+
+
+		PC 서버 라우터 
+
+
+		스위치 브릿지 허브
+
+공유기 --- PC --> auto mdix 
+	lan => 100만bit -> 1bit
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+packet tracker 
+
+com port, DB9, console port 
+
+rollover cable 
+
+RS232c 통신 규격 => 9600-115200
+
+쇼단, 사회공학툴, OSINT, 
+
+exploitdb
+
+virustotal  
+
+
+OSI 7 layer reference 
+1. 표준 유도 
+2. 개발, TS
+3. 용어정리 
+
+SDU(service data unit) 헤더제외 = payload 
+PDU(protocol data unit) 헤더포함 
+bit>frame>packet>segment>data
+
+==================================================================
+L7 사용자에게 정해진 규칙(protocol)에 따라 편리한 인터페이스를 제공하는 계층
+		C:\Windows\System32\drivers\etc
+
+
+L6 압축(합친다+줄인다), 포맷(형식), 암호
+
+url인코딩, base64, 
+md5-128bit, sha-1->160bit 
+
+암호 = 1.알고림즘(소수인분해(RSA), 이산대수문제(DH)) 2.절차(feistal구조)  3.키
+
+대칭키 알고리즘 
+	암호화키 = 복호화키 = 비밀키 
+	ex)DES(64bit), 3DES, AES(128bit), SEED, ARIA
+	장점:비대칭키에 비해서 빠르다. 연산 부하가 적다
+	단점:키분배가 안전하지 못 하다
+	
+비대칭키 알고리즘 
+	암호화키 = public key = 공개키 
+	복호화키 = private key = 사설키, 개인키
+	ex)DH(diffie hellman)-세션키생성, RSA(인증+암호,암호화키와 복호화키 역할 변경 가능)
+	장점:키분배가 비교적 안전하다 -> man in the middle 
+	단점:대칭키에 비해서 연산 느리다 	
+
+
+해시 => 해시함수(단방향함수)를 사용해서 무결성 체크를 하는 것
+	데이터 -->해시함수(MD5, SHA-1) --> 해시코드(128bit, 160bit)
+
+
+명석아 밥먹자    35568C7E528058CEA41246F6DA1813AA
+명석아 돈빌려줘   21D9220EA66C6D631E19CCB4317B0C92
+
+block cipher : block 단위 암호 
+stream cipher : 1bit 단위 암호 -> 애니그마, RC4, TKIP
+	단점 : 암호화 강도가 약하다 + OTP
+	장점 : 연산 빠르다 --> IoT -> smart object 
+
+대전원자시계-->1차NTP서버(공공)-->2차NTP서버(유료)-->3차NTP서버
+		cf) chrony
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+L5 : 세션 = 대화의 연결성 
+		cookie = 인터넷 상의 내 민증번호 
+	http헤더 referer헤더 / https SNI 
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+wireshark download
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+L4 port address (ICANN) = 16bit = 0 - 65535
+0-255 공공의 목적
+-1023 상용 -> ssl 443 넷스케이프가 만든 웹보안 --> TLS  + http  = https
+
+----------------- well known port ----------------------------
+
+-49151 등록포트 : 충돌방지를 위해서 미리 등록하고 사용하는 포트 
+-65535 임의포트 
+
+----------------- random port -------------------------
+
+TCP(Transmission Control Protocol) 연결지향프로토콜 connection oriented protocol
+	데이터 전송 전에 사전에 미리 통신 채널을 만드는 것. 신뢰성있는 프로토콜, 확인응답=ack, 재전송 절차가 있다 
+	대용량, 장거리 
+	연결설정(syn,ack)->연결유지->연결해지(fin,ack)   
+	흐름제어(flow control), 오류제어(error control), 혼잡제어(congestion control)
+	20byte + 옵션40byte = 60byte (MPTCP)
+
+UDP(User Datagram Protocol) 비연결지향프로토콜 connection-less oriented protocol
+	사전에 엑션이 없다 = best effort. 신뢰성없는 프로토콜, 상위계층에서 신뢰성 체크 
+	확응응답없음. 빈번한 통신, 근거리, 시스템관리, 재전송 절차 없다
+	실시간데이터RTP(real time protocol)=재전송 필요없는것들
+
+
+
+L2헤더 (ether type) | L3헤더 (ip protocol number) | L4헤서 (port address) .....
+                   <------------------- MTU ------------------------------
+                                               <------ MSS --------------
+
+
+C ---> S   src port : random port & dst port  : well-known port 
+C <--- S   src port : well-known port & dst port  : random port 
+
+순서번호 : 1000번대 이상의 랜덤번호
+1. 조각화 -> 재조립 
+2. 수신확인응답 = ack = seq+1     A --- seq57 --> B ---- seq57+1=58 --> A 
+3. 재전송 요구 = 순서번호            A --- seq57 --> B ---- seq57 -------> A 
+
+
+TCP flag => syn(통신요청) ack rst(reset) psh(push) urg(urgent) fin(finish)
+
+연결설정 : 3handshake (syn ack)
+
+C ----- syn(www tcp 80) + 순서번호 초기화 -----> S
+C <--------- ack + window size ----------- S  cookie 
+C ---------------- ack-------------------> S   xxx
+established session 
+half open 
+
+1. 보안 업데이트 --> 수신버퍼 회수가 빨라짐, 대기시간이 줄어듦
+2. cookie 사용하기 --> SCTP 
+3. 방화벽 intercept 기능 -> tcp fin을 사용해서 tcp 세션을 강제 종료 
+
+window size = 수신버퍼 크기 = 한번에 처리가능한 데이터 크기 
+DDoS -> tcp syn attack 
+
+
+in line mode 
+mirror mode --> SPAN(Switched Port Analyzer)
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+연결종료 3handshake, 4handshake (fin, ack)
+
+A ----- fin ------> B
+A <--- ack+fin ---- B
+A ------- ack ----> B 
+
+
+A ----- fin ------> B
+A <----- ack ------ B
+  <<<<< 데이터 <<<<<
+A <----- fin ------ B 
+A ------ ack -----> B
+
+---------------------------------------------------------------
+
+A ------- seq57 ------> B
+A <-- ack58=seq57+7 --- B
+
+
+A ------- seq57 ------> B
+A <-- nak = seq57 ----- B
+
+------------------------------------------------------------
+3번 못 받았다 = nac
+nac 다음에 요구하는 3번 / 또 달라고 보내는 거 = duplicate ack*3 
+처음부터 다시 
+1. duplicate*3 
+2. RTO
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+PSH(push) 수신버퍼가 찰때까지 기다리지 말고, 상위계층으로 빨리 올려보내서 
+		버퍼를 비워라 
+URG(urgent) : 합의된 것이 있어야 된다 
+		뒤 따라오는 urgent pointer가 유효하다 
+
+checksum -> 수신 데이터의 오류확인
+	tcp필수, udp옵션, IPv4필수, IPv6기능삭제
+	--> TCP 재전송 요구
+------------------------------------------------------------------------
+1segment에서 시작 -> 지수적 증가 -> slow start 구간 = ss구간 
+duplicate ack가 1발생되면 
+승수적 증가 -> congestion avoidance 구간 = ca구간 
+duplicate*3 또는 RTO ===> RTO시간은 2배로 증가
+
+1segment로 돌아가서 다시 시작 = tahoe기법 
+마지막 처리했던 segment의 절반으로 내려가서 다시 시작 = reno기법 
+
+=============================================================================
+L3 network계층 ip계층 : 논리적 연결 : end to end 연결 --> IPv4 address
+	routing : 서로 다른 네트워크 (network-id/subnet-id)가 통신하기 위해서 
+	1. 주소광고+주소학습=주소교환 -> ip table [route print, show ip route, route,,]
+		1-1.static routing
+			정적static : 목적지로 가는 경로가 하나
+			동적static : 목적지로 가는 경로가 복수개
+			-> longest match rule, AD 
+		1-2.dynamic routing
+		    IGP:동일 조직(라우팅 정책이 같은 조직)간의 정보 교환:rip* igrp eigrp ospf isis..
+		    EGP:다른 조직과의 정보교환 : bgp msdp ..
+		1-3.default routing 	0.0.0.0 0.0.0.0     0.0.0.0/0
+	2. 최적경로연산  --> dark web / tor --> onion routing 
+		distributed bellman ford algorithm
+			--> distance vector routing protocol : RIP IGRP 
+		네이버 지도 길찾기 : 거리 / 지하철 어플 : 지하철역수 
+		dijkstra algorithm 
+			--> link state routing protocol : OSPF ISIS 
+		네이버 지도 길찾기 : 시간 / 지하철 어플 : 환승역 
+
+		DUAL(diffusing update algorithm)
+			-> advanced distance vector routing protocol : 	EIGRP 
+		대체경로 미리 연산 ==> fast convergence 
+
+	3. ip lookup
+--------------------------------------------------------------------------------
+ToS -> 8bit
+
+QoS 
+1.차별화서비스 : DiffServ : differencial service
+2.대역폭예약서비스 : IntServ : intergrated service = RVSP
+
+
+3bit : ip precedence : CoS 값 상속 -> class of service (L2 마킹값)(3bit)
+6bit : DSCP 
+2bit : ECN explicit congestion notice --> DCTCP 
+
+
+000(0) 일반데이터 저, default
+001(1) 일반데이터 중
+010(2) 일반데이터 고
+011(3) 음성 제어 프로토콜 (H323, SIP, MGCP, SCCP,,,)
+100(4) 영상 
+101(5) 음성(jitter20ms, delay150-200ms)->RTP(real time protocol) UDP16384-32767
+
+110
+111
+
+DSCP 46 ef
+
+https://white-polarbear.tistory.com/61
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+조각화에 사용되어지는 옵션들 --> IPv6에서는 조각화 기능 삭제 
+
+id --> 원래 하나였어요 
+ip flag -> X D(don't fragmentation) M(more fragmetation)
+		df-bit			mf-bit 
+offset 
+
+
+df-bit[최적의 mtu 사이즈 확인하기]
+
+==================================================================================
+ttl(time to live) [무한루프 방지, 경로추적에 사용]
+		linux 64 / window 128 / unix 256
+
+ip protocol number 
+
+===============================================================================
+L2 : 물리적 주소 : IEEE -> MAC OUI wireshark
+mac 주소 (arpa network) 16진수 표기, 선두3byte=OUI[Organizationally Unique Identifier]
+하위3byte = 제품id 
+
+EUI48[48bit, IPv4] XXXX.XXXX.XXXX  XX-XX-XX-XX-XX-XX
+
+
+EUI64[64bit, IPv6] XXXX.XXXX.XXXX.XXXX  XX-XX-XX-XX-XX-XX-XX-XX
+
+
+
+98-83-89-83-EC-1E + 16bit [FFFE] = 64bit
+
+98+2=9a
+
+9a-83-89-FF-FE-83-EC-1E
+
+----------------------------------------------------------------------------
+IPv4 10진수 표기 32bit  --> classful --> classless
+IPv6 16진수 표기 128bit --> classless 
+
+classful : ip주소 중에서 어디까지가 network-id 인지를 알수있다. 송명석  02-111-2222 
+		network-id 고정, 사전에 정의되어있다 
+
+classless : 따로 표기하지 않으면 어디까지가 network-id인지를 알수없다. 연개소문
+		netmask(subnet mask) wildcard prefix 
+
+classful --> classless
+1. 관리 효율성   2. subnetting & supernetting
+		
+---------------------------------------------------------------------------
+classful -> IP주소에서 첫 nibble을 기준으로 
+
+xxxx xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+
+A-class
+0xxx xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+0000 0000.0000 0000.0000 0000.0000 0000[0.0.0.0]
+~
+0111 1111.1111 1111.1111 1111.1111 1111[127.255.255.255]
+	0.0.0.0-127.255.255.255 --> X / X.X.X
+B-class
+10xx xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+1000 0000.0000 0000.0000 0000.0000 0000[128.0.0.0]
+~
+1011 1111.1111 1111.1111 1111.1111 1111[191.255.255.255]
+	128.0.0.0-191.255.255.255--> X.X / X.X
+C-class
+110x xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+1100 0000.0000 0000.0000 0000.0000 0000[192.0.0.0]
+~
+1101 1111.1111 1111.1111 1111.1111 1111[223.255.255.255]
+	192.0.0.0-223.255.255.255--> X.X.X / X
+D-class -> 그룹주소=대표주소
+1110 xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+1110 0000.0000 0000.0000 0000.0000 0000[224.0.0.0]
+~
+1110 1111.1111 1111.1111 1111.1111 1111[239.255.255.255]
+	224.0.0.0-239.255.255.255
+E-class = 연구용
+1111 xxxx.xxxx xxxx.xxxx xxxx.xxxx xxxx
+1111 0000.0000 0000.0000 0000.0000 0000[240.0.0.0]
+~
+1111 1111.1111 1111.1111 1111.1111 1111[255.255.255.255]
+240.0.0.0-255.255.255.255
+
+
+
+	
